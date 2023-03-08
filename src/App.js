@@ -12,7 +12,10 @@ function App() {
         <h1>Task Todo</h1>
       </header>
       <AddTodo 
-        sendTodo = {myTodo => setTodoList([...todoList, myTodo])}
+        sendTodo = {myTodo => {
+          myTodo.preventDefault()
+          setTodoList([...todoList, myTodo])
+        }}
       />
     </div>
   );
