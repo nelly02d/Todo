@@ -14,14 +14,16 @@ function App() {
         <h1>Task Todo</h1>
       </header>
       <AddTodo 
-        sendTodo = {myTodo => setTodoList([...todoList, myTodo])}
+        todos = {myTodo => setTodoList([...todoList, myTodo])}
       />
       <div>
         <ul>
-          {todoList.map((todo, id) => (
+          { todoList.map((todo, id) => (
             <TodoInfo 
               key={id}
               todo={todo}
+              deleteTodo={
+                todoId => setTodoList(todoList.filter((todo) => todo  !== todoId))}
             />
           ))}
         </ul>
