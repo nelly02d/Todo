@@ -1,9 +1,19 @@
+import { useState } from "react";
+import AddTodo from "./components/AddTodo";
+
+
+
 function App() {
+  const [todoList, setTodoList] = useState([]);
+
   return (
     <div className="App">
       <header>
-        <h1>Task today</h1>
+        <h1>Task Todo</h1>
       </header>
+      <AddTodo 
+        sendTodo = {myTodo => setTodoList([...todoList, myTodo])}
+      />
     </div>
   );
 }
