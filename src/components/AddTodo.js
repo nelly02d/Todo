@@ -1,25 +1,26 @@
 import { useState } from "react";
 
 function AddTodo({ todos }) {
+  //to clear todo
   const clearTodo = ''
 
-  const [input, setInput] = useState(clearTodo);
+  const [todoInput, setTodoInput] = useState(clearTodo);
   //Todo function information
-  const submitTodo = (e) => {
+  const setTodo = (e) => {
     e.preventDefault();
     //Send todo information
-    todos(input);
+    todos(todoInput);
     //Set to clear input fiealds
-    setInput(clearTodo)
+    setTodoInput(clearTodo)
   }
 
   return (
     <div className="form-container">
-      <form onSubmit={submitTodo}>
+      <form onSubmit={setTodo}>
         <label>
           <input 
-            value={input}
-            onChange={event => setInput(event.target.value)}
+            value={todoInput}
+            onChange={event => setTodoInput(event.target.value)}
             placeholder="Enter Task"
           />
         </label>

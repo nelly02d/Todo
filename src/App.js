@@ -1,13 +1,14 @@
 import { useState } from "react";
 import AddTodo from "./components/AddTodo";
 import TodoInfo from "./components/TodoInfo";
+import SearchTodo from "./components/SearchTodo";
 
 
 function App() {
   //Holds todolist array
   const [todoList, setTodoList] = useState([]);
   // const [query, setQuery] = useState('');
-
+  
   return (
     <div className="App">
       <header>
@@ -15,18 +16,20 @@ function App() {
       </header>
       <AddTodo 
         todos = {myTodo => setTodoList([...todoList, myTodo])}
+        todoList={todoList}
+      />
+      <SearchTodo 
+      
       />
       <div>
-        <ul>
-          { todoList.map((todo, id) => (
-            <TodoInfo 
-              key={id}
-              todo={todo}
-              deleteTodo={
-                todoId => setTodoList(todoList.filter((todo) => todo  !== todoId))}
-            />
-          ))}
-        </ul>
+        { todoList.map((todo, id) => (
+          <TodoInfo 
+            todo={todo}
+            key={id}
+            deleteTodo={
+              todoId => setTodoList(todoList.filter((todo) => todo !== todoId))}
+          />
+        ))}
       </div>     
     </div>
   );

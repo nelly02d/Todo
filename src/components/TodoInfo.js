@@ -1,14 +1,26 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faCheckSquare } from "@fortawesome/free-solid-svg-icons"
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react";
 
-function TodoInfo({todo, id, deleteTodo}) {
+function TodoInfo({ todo, id, deleteTodo, done}) {
+
+  const [checked, setchecked] = useState(false)
+
+  const handleChange = () => {
+    setchecked(!checked)
+  }
 
   return (
-    <li key={id} className="todo" > 
-      <FontAwesomeIcon icon={faCheckSquare}/> 
-        {todo}
+    <label>
+      <input 
+      type="checkbox" 
+      key={id} 
+      onChange={handleChange}
+      value={done}
+      />
+      {todo}
       <FontAwesomeIcon icon={faTrashCan} onClick={() => {deleteTodo(todo)}}/>
-    </li>
+    </label>
   )
 }
 
