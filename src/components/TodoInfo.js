@@ -6,16 +6,12 @@ function TodoInfo({ todo, id, deleteTodo, done}) {
 
   const [checked, setchecked] = useState(false)
 
-  const handleChange = () => {
-    setchecked(!checked)
-  }
-
   return (
-    <label>
+    <label className={"" + (checked ? "strike" : "todo")}>
       <input 
       type="checkbox" 
       key={id} 
-      onChange={handleChange}
+      onChange={(e) => setchecked(e.target.checked)}
       value={done}
       />
       {todo}

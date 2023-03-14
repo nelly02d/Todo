@@ -1,13 +1,15 @@
 import { useState } from "react";
 import AddTodo from "./components/AddTodo";
 import TodoInfo from "./components/TodoInfo";
-import SearchTodo from "./components/SearchTodo";
-
+import QueryTodo from "./components/QueryTodo";
+import "./App.css";
 
 function App() {
   //Holds todolist array
   const [todoList, setTodoList] = useState([]);
-  // const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(null);
+
+  // const filteredTodo = todoList.filter(item => item.todo)
   
   return (
     <div className="App">
@@ -18,9 +20,10 @@ function App() {
         todos = {myTodo => setTodoList([...todoList, myTodo])}
         todoList={todoList}
       />
-      <SearchTodo 
-      
-      />
+     <QueryTodo 
+      query={query}
+      onQueryChange={myQuery => setQuery(myQuery)}
+     />
       <div>
         { todoList.map((todo, id) => (
           <TodoInfo 
