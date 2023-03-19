@@ -1,39 +1,54 @@
 import { useState } from "react";
-import AddTodo from "./components/AddTodo";
-import TodoInfo from "./components/TodoInfo";
-import QueryTodo from "./components/QueryTodo";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import TodoFilter from "./components/TodoFilter";
 import "./App.css";
 
 function App() {
   //Holds todolist array
   const [todoList, setTodoList] = useState([]);
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState('all')
 
-  // const filteredTodo = todoList.filter(item => item.todo)
+  // const todoSearch = todoList.filter(todo => {
+  //   switch(query) {
+  //     case 'completed':
+  //       return todo.isComplete === true;
+  //     case 'pending': 
+  //       return todo.isComplete === false;
+  //     default: 
+  //       return todo.todo
+  //   }
+  // });
   
   return (
     <div className="App">
       <header>
-        <h1>Task Todo</h1>
+        <h1>Task for Today:</h1>
       </header>
-      <AddTodo 
-        todos = {myTodo => setTodoList([...todoList, myTodo])}
-        todoList={todoList}
-      />
-     <QueryTodo 
-      query={query}
-      onQueryChange={myQuery => setQuery(myQuery)}
-     />
+
+      <div className="form-container">
+        <TodoForm 
+          todos = {myTodo => setTodoList([...todoList, myTodo])}
+          todoList = {todoList}
+        />
+        <TodoFilter 
+          selectedValue={(myQuery) => setQuery(myQuery)}
+        />
+      </div>
+        
       <div>
-        { todoList.map((todo, id) => (
-          <TodoInfo 
+        { todoList.map((todo) => (
+          <TodoList 
             todo={todo}
-            key={id}
+            key={todo.id}
             deleteTodo={
-              todoId => setTodoList(todoList.filter((todo) => todo !== todoId))}
+              (todoId) => setTodoList(todoList.filter((todo) => todo.id !== todoId))
+            }
+            handleFilter={todo.isComplete}
+            query={query}
           />
         ))}
-      </div>     
+      </div>   
     </div>
   );
 };

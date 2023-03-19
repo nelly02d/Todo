@@ -1,7 +1,7 @@
-.strike {
+.completed {
   text-decoration: line-through;
 }
 
-.todo {
+.pending {
   text-decoration: none;
 }
