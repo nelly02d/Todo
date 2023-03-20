@@ -22,22 +22,27 @@ function App() {
   
   return (
     <div className="App">
+      <div className="container">
       <header>
         <h1>Task for Today:</h1>
       </header>
 
       <div className="form-container">
+        {/* Select option that query's todos */}
+        <TodoFilter 
+          selectedValue={(myQuery) => setQuery(myQuery)}
+        />
+        {/* An input that creates todo */}
         <TodoForm 
           todos = {myTodo => setTodoList([...todoList, myTodo])}
           todoList = {todoList}
         />
-        <TodoFilter 
-          selectedValue={(myQuery) => setQuery(myQuery)}
-        />
+        
       </div>
         
-      <div>
+      <div className="todo-list">
         { todoList.map((todo) => (
+          // Created todo list with checkbox and delete icon
           <TodoList 
             todo={todo}
             key={todo.id}
@@ -49,6 +54,7 @@ function App() {
           />
         ))}
       </div>   
+      </div>
     </div>
   );
 };

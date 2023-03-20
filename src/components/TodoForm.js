@@ -18,16 +18,16 @@ function TodoForm({ todos, todoList }) {
   }
 
   return (
-    <form onSubmit={publishTodo}>
+    <form className="todo-form" onSubmit={publishTodo}>
       <label>
-        Add Task:
         <input
           value={todoInput}
           onChange={event => setTodoInput(event.target.value)}
           placeholder="Enter Task"
+          className="todo-input"
         />
       </label>
-      <input type="submit"/>
+      <input className="submit" type="submit"/>
     </form>
   )
 };

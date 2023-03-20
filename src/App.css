@@ -1,7 +1,81 @@
-.completed {
-  text-decoration: line-through;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.pending {
-  text-decoration: none;
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color:bisque;
+  height: 100vh;
 }
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-form {
+  margin: 5px;
+}
+
+.todo-form > input {
+  margin: 10px 5px;
+}
+
+select {
+  padding: 2px;
+}
+
+.todo-input {
+  padding: 2px;
+}
+
+.submit {
+  padding: 2px 5px;
+  color: rgb(75, 75, 229);
+  background: #ffffff;
+  border: 1px solid rgb(75, 75, 229);
+  cursor: pointer;
+  transition: all ease 0.5s;
+}
+
+.submit:hover {
+  
+  padding: 2px 5px;
+  color: #ffffff;
+  background: rgb(75, 75, 229);
+  
+}
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 250px;
+}
+
+.todo-list > label {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3px;
+  background-color: burlywood;
+  padding: 2px 5px;
+}
+
+.todo-list > label > span {
+  flex: 1;
+  padding-left:80px;
+  font-size: 1.2rem;
+}
+
+.fa-trash-can {
+  color: rgb(216, 71, 60);
+}
+
+
+
